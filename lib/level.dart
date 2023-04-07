@@ -47,22 +47,12 @@ class LevelPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ElevatedButton(
                     onPressed: () {
-                      print('Level ${index + 1} selected');
-                      if (index < questions.length) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionPage(
-                              question: questions[index].question,
-                              answers: questions[index].answers,
-                              correctAnswerIndex:
-                                  questions[index].correctAnswerIndex,
-                            ),
-                          ),
-                        );
-                      } else {
-                        print('No question available for level ${index + 1}');
-                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuestionPage(levelIndex: index),
+                        ),
+                      );
                     },
                     style: ButtonStyle(
                       minimumSize:
