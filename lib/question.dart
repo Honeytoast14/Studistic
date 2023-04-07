@@ -27,7 +27,12 @@ class _QuestionPageState extends State<QuestionPage> {
             icon: Icon(
               Icons.arrow_back_ios,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LevelPage()),
+              );
+            },
           ),
           backgroundColor: Colors.black,
         ),
@@ -64,7 +69,12 @@ class _QuestionPageState extends State<QuestionPage> {
             icon: Icon(
               Icons.arrow_back_ios,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LevelPage()),
+              );
+            },
           ),
           backgroundColor: Colors.black,
         ),
@@ -91,14 +101,23 @@ class _QuestionPageState extends State<QuestionPage> {
                     size: 30,
                     color: Color(0xFFF5B446),
                   ),
-                  SizedBox(
-                      width: 8), // Add some space between the icon and the text
+                  SizedBox(width: 8),
                 ],
               ),
               SizedBox(
                 height: 30,
               ),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFFD9D9D9)),
+                  minimumSize: MaterialStateProperty.all<Size>(Size(150, 50)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
                 onPressed: () {
                   if (isLastLevel) {
                     Navigator.push(
@@ -119,9 +138,15 @@ class _QuestionPageState extends State<QuestionPage> {
                   }
                 },
                 child: Text(
-                  isLastLevel ? 'Go to Level Page' : 'Next Level',
+                  isLastLevel ? 'Back To Level' : 'Next Level',
+                  style: TextStyle(
+                    color: Color(0xFFF35F28),
+                    fontFamily: 'SpaceMono',
+                    wordSpacing: 5.5,
+                    fontSize: 18,
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -134,7 +159,12 @@ class _QuestionPageState extends State<QuestionPage> {
             icon: Icon(
               Icons.arrow_back_ios,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LevelPage()),
+              );
+            },
           ),
           backgroundColor: Colors.black,
         ),
@@ -143,14 +173,14 @@ class _QuestionPageState extends State<QuestionPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(14.0),
+              padding: const EdgeInsets.all(6.0),
               child: Text(
                 'Level ${widget.levelIndex + 1}', // Add level number text here
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'SpaceGrotesk',
+                  wordSpacing: 5.5,
+                  fontFamily: 'SpaceMono',
                   color: Color(0xFFF35F28),
                 ),
               ),
@@ -200,16 +230,4 @@ class _QuestionPageState extends State<QuestionPage> {
       );
     }
   }
-}
-
-class Question {
-  final String question;
-  final List<String> answers;
-  final int correctAnswerIndex;
-
-  Question({
-    required this.question,
-    required this.answers,
-    required this.correctAnswerIndex,
-  });
 }

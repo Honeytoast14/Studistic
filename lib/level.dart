@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'question.dart';
+import 'main.dart';
 
 class LevelPage extends StatelessWidget {
   const LevelPage({Key? key}) : super(key: key);
@@ -18,7 +17,12 @@ class LevelPage extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_ios,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainApp()),
+              );
+            },
           ),
           backgroundColor: Colors.black,
         ),
