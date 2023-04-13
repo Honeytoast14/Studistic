@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'level.dart';
+import 'test.dart';
 
 void main() {
   runApp(MaterialApp(home: MainApp()));
@@ -95,27 +96,83 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 50),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     // TODO: implement test button functionality
-          //   },
-          //   style: ButtonStyle(
-          //       minimumSize: MaterialStateProperty.all<Size>(Size(150, 50)),
-          //       backgroundColor:
-          //           MaterialStateProperty.all<Color>(Color(0xFFD9D9D9)),
-          //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          //         RoundedRectangleBorder(
-          //           borderRadius: BorderRadius.circular(8.0),
-          //         ),
-          //       )),
-          //   child: Text(
-          //     'Test',
-          //     style: TextStyle(
-          //         color: Color(0xFFF35F28),
-          //         fontSize: 18,
-          //         fontFamily: 'SpaceMono'),
-          //   ),
-          // ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestPage()),
+              );
+            },
+            style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all<Size>(Size(150, 50)),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Color(0xFFD9D9D9)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                )),
+            child: Text(
+              'Test',
+              style: TextStyle(
+                  color: Color(0xFFF35F28),
+                  fontSize: 18,
+                  fontFamily: 'SpaceMono'),
+            ),
+          ),
         ])));
+  }
+}
+
+class TestPage extends StatelessWidget {
+  const TestPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Test'),
+        backgroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Test',
+              style: TextStyle(
+                  color: Color(0xFFF35F28),
+                  fontSize: 24,
+                  fontFamily: 'SpaceMono',
+                  wordSpacing: 5.5),
+            ),
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                // TODO: implement start button functionality in TestPage
+              },
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all<Size>(Size(150, 50)),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Color(0xFFD9D9D9)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              child: Text(
+                'Start',
+                style: TextStyle(
+                    color: Color(0xFFF35F28),
+                    fontSize: 18,
+                    fontFamily: 'SpaceMono'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

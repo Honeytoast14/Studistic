@@ -87,3 +87,33 @@ class LevelPage extends StatelessWidget {
     );
   }
 }
+
+class QuestionTest extends StatefulWidget {
+  const QuestionTest({super.key});
+
+  @override
+  State<QuestionTest> createState() => _QuestionTestState();
+}
+
+class _QuestionTestState extends State<QuestionTest> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainApp()),
+            );
+          },
+        ),
+        backgroundColor: Colors.black,
+      ),
+    );
+  }
+}
