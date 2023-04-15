@@ -150,7 +150,10 @@ class TestPage extends StatelessWidget {
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                // TODO: implement start button functionality in TestPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuestionTest()),
+                );
               },
               style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all<Size>(Size(150, 50)),
