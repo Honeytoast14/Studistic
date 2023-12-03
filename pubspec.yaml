@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  audioplayers: ^0.20.1
 
 dev_dependencies:
   flutter_test:
@@ -22,10 +21,6 @@ flutter:
     - assets/images/Studistic.png
     - assets/images/appstore.png
     - assets/images/playstore.png
-    - assets/sounds/correct.mp3
-    - assets/sounds/failed.mp3
-    - assets/sounds/success.mp3
-    - assets/sounds/wrong.mp3
 
   fonts:
     - family: SpaceGrotesk
