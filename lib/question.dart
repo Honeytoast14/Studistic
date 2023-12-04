@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'level.dart';
-import 'englishLevel/question_data.dart';
+import 'englishLevel/common_question.dart';
 
 class QuestionPage extends StatefulWidget {
   final int levelIndex;
