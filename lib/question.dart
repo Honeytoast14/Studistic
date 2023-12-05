@@ -10,7 +10,6 @@ class QuestionPage extends StatefulWidget {
   const QuestionPage({Key? key, required this.levelIndex}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _QuestionPageState createState() => _QuestionPageState();
 }
 

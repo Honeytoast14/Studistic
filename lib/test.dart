@@ -85,29 +85,31 @@ class _QuestionTestState extends State<QuestionTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainApp()),
-            );
-          },
-        ),
         backgroundColor: Colors.black,
-      ),
-      body: Center(
-        child: currentQuestion == null
-            ? CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainApp()),
+              );
+            },
+          ),
+          backgroundColor: Colors.black,
+        ),
+        body: SingleChildScrollView(
+            // Wrap the main Column with SingleChildScrollView
+            child: Center(
+          child: currentQuestion == null
+              ? CircularProgressIndicator()
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
                       padding: const EdgeInsets.all(14.0),
                       child: Text(
                         currentQuestion!.question,
@@ -119,42 +121,43 @@ class _QuestionTestState extends State<QuestionTest> {
                           fontFamily: 'SpaceGrotesk',
                           color: Color(0xFFD9D9D9),
                         ),
-                      )),
-                  SizedBox(height: 20),
-                  ...currentQuestion!.answers.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final answer = entry.value;
-                    return ElevatedButton(
-                      onPressed: _answeredCorrectly
-                          ? null
-                          : () => _onAnswerPressed(index),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFFDC05A)),
-                      child: Text(
-                        answer,
-                        style: TextStyle(
-                          fontFamily: 'SpaceGrotesk',
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
                       ),
-                    );
-                  }).toList(),
-                  SizedBox(height: 20),
-                  Text(
-                    '$_timeLeft seconds left',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'SpaceGrotesk',
-                      color: Color(0xFFD9D9D9),
                     ),
-                  ),
-                ],
-              ),
-      ),
-    );
+                    SizedBox(height: 20),
+                    ...currentQuestion!.answers.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final answer = entry.value;
+                      return ElevatedButton(
+                        onPressed: _answeredCorrectly
+                            ? null
+                            : () => _onAnswerPressed(index),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFDC05A),
+                        ),
+                        child: Text(
+                          answer,
+                          style: TextStyle(
+                            fontFamily: 'SpaceGrotesk',
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    SizedBox(height: 20),
+                    Text(
+                      '$_timeLeft seconds left',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'SpaceGrotesk',
+                        color: Color(0xFFD9D9D9),
+                      ),
+                    ),
+                  ],
+                ),
+        )));
   }
 }
 

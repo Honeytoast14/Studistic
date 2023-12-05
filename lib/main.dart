@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'audio_service.dart';
 import 'level.dart';
 import 'test.dart';
+import 'setting.dart';
 
 import '../difficulty.dart';
 import 'choose_difficulty.dart'; // Import the ChooseDifficultyPage
@@ -59,10 +60,15 @@ class DifficultyWrapper extends StatelessWidget {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final AudioService audioService = AudioService();
+
+  MainApp({Key? key}) : super(key: key) {
+    audioService.playBackgroundMusic();
+  }
 
   @override
   Widget build(BuildContext context) {
+    audioService.playBackgroundMusic();
     return MaterialApp(
       home: HomePage(),
     );

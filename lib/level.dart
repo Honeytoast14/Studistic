@@ -47,14 +47,19 @@ class LevelPage extends StatelessWidget {
                   crossAxisSpacing: 20.0,
                   mainAxisSpacing: 20.0,
                 ),
-                itemCount: 8,
+                itemCount: 34,
                 itemBuilder: (context, index) {
+                  Color buttonColor = index >= 17
+                      ? Colors.red
+                      : (index >= 8 ? Colors.orange : Color(0xFFFDC05A));
+
                   return ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QuestionPage(levelIndex: index),
+                          builder: (context) =>
+                              QuestionPage(levelIndex: index + 1),
                         ),
                       );
                     },
@@ -67,7 +72,7 @@ class LevelPage extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFDC05A)),
+                          MaterialStateProperty.all<Color>(buttonColor),
                     ),
                     child: Text(
                       '${index + 1}',
